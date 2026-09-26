@@ -64,14 +64,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <!-- One variable font file, loaded without blocking first paint -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" />
-<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" />
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" /></noscript>
 
 <style>
 /* ── TOKENS ──────────────────────────────────────────── */
 :root {
-  --blue:#2563EB; --blue-dim:#1D4ED8; --blue-soft:#EFF6FF;
+  --blue:#1D4ED8; --blue-dim:#1E40AF; --blue-soft:#EEF2FF; --blue-line:#C7D2FE;
+  --muted:#4B5563; --container:1600px; --gutter:48px;
   --ink:#0D0D14; --ink-80:rgba(13,13,20,0.8); --ink-70:rgba(13,13,20,0.7); --ink-50:rgba(13,13,20,0.5);
   --white:#FFFFFF; --off:#F7F8FC; --border:#E2E8F0;
   --purple:#7C3AED; --purple-dim:#6D28D9; --purple-soft:#F5F0FF;
@@ -84,8 +85,8 @@
 
 /* ── RESET ───────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:94px}
-body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 a{color:inherit;text-decoration:none}
 a,button,input,select,textarea,summary{touch-action:manipulation}
 img,svg{display:block;max-width:100%}
@@ -96,113 +97,157 @@ ul{list-style:none}
 .skip-link:focus{left:0}
 
 /* ── LAYOUT ──────────────────────────────────────────── */
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.section{padding:80px 0}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:96px 0}
 .section-off{background:var(--off)}
-.section-header{text-align:center;margin-bottom:48px;max-width:660px;margin-left:auto;margin-right:auto}
-.section-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.section-title{font-size:clamp(1.85rem,4vw,2.6rem);font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:14px;line-height:1.15}
-.section-sub{font-size:clamp(1rem,1.6vw,1.05rem);color:var(--ink-50);line-height:1.7}
+.section-header{text-align:center;margin-bottom:56px;max-width:780px;margin-left:auto;margin-right:auto}
+/* Eyebrows are pill badges, same as the hero badge; colour follows the text colour */
+.section-eyebrow,.fund-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:100px;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--blue);background:var(--blue-soft);background:color-mix(in srgb,currentColor 8%,#fff);border:1px solid var(--blue-line);border-color:color-mix(in srgb,currentColor 24%,#fff);margin-bottom:20px;line-height:1.3}
+.section-eyebrow::before,.fund-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+.section-title{font-size:clamp(1.9rem,3.3vw,3rem);font-weight:700;letter-spacing:-.025em;color:var(--ink);margin-bottom:16px;line-height:1.12}
+.section-sub{font-size:clamp(1rem,1.3vw,1.2rem);color:var(--muted);line-height:1.6}
 
 /* ── BUTTONS ─────────────────────────────────────────── */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 22px;border-radius:9px;font-size:14.5px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .2s,border-color .2s,color .2s;white-space:nowrap;border:none;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 22px;border-radius:8px;font-size:15.5px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .2s,border-color .2s,color .2s;white-space:nowrap;border:none;text-decoration:none}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.98);transition-duration:.06s}
 @media (hover:none){.btn:hover{transform:none}.btn{transition:background .15s,border-color .15s,color .15s}}
-.btn-lg{padding:15px 30px;font-size:15.5px;border-radius:11px}
-.btn-blue{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(37,99,235,.28)}
+.btn-lg{padding:17px 32px;font-size:17px;border-radius:8px}
+.btn-arrow{width:18px;height:18px;flex-shrink:0;transition:transform .2s}
+.btn:hover .btn-arrow{transform:translateX(3px)}
+.btn-ico{width:18px;height:18px;flex-shrink:0}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(29,78,216,.22)}
 .btn-blue:hover{background:var(--blue-dim);box-shadow:0 10px 26px rgba(37,99,235,.36)}
-.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-outline{background:#fff;color:var(--ink);border:1px solid #D6DCE5;box-shadow:0 1px 2px rgba(13,13,20,.04)}
 .btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
 .btn-purple{background:var(--purple);color:#fff;box-shadow:0 6px 18px rgba(124,58,237,.3)}
 .btn-purple:hover{background:var(--purple-dim);box-shadow:0 10px 26px rgba(124,58,237,.4)}
 .btn-emerald{background:var(--emerald);color:#fff;box-shadow:0 6px 18px rgba(5,150,105,.28)}
 .btn-emerald:hover{background:var(--emerald-dim);box-shadow:0 10px 26px rgba(5,150,105,.36)}
 
+/* ── ANNOUNCEMENT BAR ────────────────────────────────── */
+.announce{position:relative;background:var(--blue);color:#fff;z-index:101}
+.announce[hidden]{display:none}
+.announce-inner{max-width:var(--container);margin:0 auto;padding:12px 64px;display:flex;align-items:center;justify-content:center;text-align:center}
+.announce-link{display:inline-flex;align-items:center;gap:12px;font-size:15.5px;font-weight:600;line-height:1.4;color:#fff}
+.announce-link:hover .announce-more{text-decoration:underline;text-underline-offset:3px}
+.announce-spark{width:18px;height:18px;flex-shrink:0;opacity:.95}
+.announce-sep{opacity:.6}
+.announce-short{display:none}
+.announce-more{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.announce-more svg{width:16px;height:16px;transition:transform .2s}
+.announce-link:hover .announce-more svg{transform:translateX(3px)}
+.announce-close{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:#fff;cursor:pointer;transition:background .2s}
+.announce-close:hover{background:rgba(255,255,255,.15)}
+
 /* ── NAV ─────────────────────────────────────────────── */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:32px}
-.nav-brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.brand-mark{width:54px;height:48px;flex-shrink:0;background:var(--logo) center/contain no-repeat}
-.nav-logo{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.7px}
+header{position:sticky;top:0;z-index:100}
+nav{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);height:88px;display:flex;align-items:center;gap:40px}
+.nav-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:50px;height:44px;flex-shrink:0;background:var(--logo) center/contain no-repeat}
+.nav-logo{font-size:26px;font-weight:800;color:var(--ink);letter-spacing:-.8px}
 .nav-logo span{color:var(--blue)}
-.nav-links{display:flex;align-items:center;gap:30px;flex:1;justify-content:center}
-.nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-80);transition:color .2s;position:relative}
-.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.nav-links a:hover{color:var(--blue)}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta-wrap{flex-shrink:0}
-.mob-btn{display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:6px;flex:1;justify-content:flex-start}
+.nav-links>li{position:relative}
+.nav-link{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border:0;border-radius:8px;background:transparent;font-family:inherit;font-size:16.5px;font-weight:500;color:var(--ink);cursor:pointer;transition:color .2s,background .2s;white-space:nowrap}
+.nav-link:hover,.nav-drop.open>.nav-link{color:var(--blue);background:var(--off)}
+.nav-chev{width:16px;height:16px;transition:transform .2s;opacity:.8}
+.nav-drop.open .nav-chev{transform:rotate(180deg)}
+.nav-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:330px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px -12px rgba(13,13,20,.22);padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s;z-index:10}
+.nav-menu::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-drop.open .nav-menu{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .18s ease,transform .18s ease,visibility 0s}
+.nav-menu a{display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:10px;transition:background .15s}
+.nav-menu a:hover,.nav-menu a:focus-visible{background:var(--off)}
+.nav-menu-ico{width:38px;height:38px;border-radius:10px;background:var(--blue-soft);display:grid;place-items:center;font-size:17px;flex-shrink:0}
+.nav-menu-t{display:block;font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.nav-menu-d{display:block;font-size:13px;color:var(--ink-50);line-height:1.45;margin-top:2px}
+.nav-cta-wrap{flex-shrink:0;margin-left:auto;display:flex;align-items:center;gap:8px}
+.nav-cta-wrap .btn{padding:14px 24px;font-size:16.5px}
+.nav-call{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-size:15.5px;font-weight:600;color:var(--ink);transition:color .2s,background .2s}
+.nav-call:hover{color:var(--blue);background:var(--off)}
+.nav-call svg{width:18px;height:18px}
+.mob-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-right:-8px;color:var(--ink);border-radius:8px}
 
 /* ── MOBILE MENU ─────────────────────────────────────── */
-.mmenu{display:none;position:fixed;inset:0;background:var(--white);z-index:200;padding:20px 24px;flex-direction:column}
+.mmenu{display:none;position:fixed;inset:0;background:var(--white);z-index:280;padding:14px 20px 24px;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
 .mmenu.open{display:flex}
-.mmenu-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
-.mmenu-links{display:flex;flex-direction:column;gap:4px;flex:1}
-.mmenu-links a{display:block;padding:13px 16px;font-size:16px;font-weight:600;color:var(--ink);border-radius:9px;transition:background .2s}
-.mmenu-links a:hover{background:var(--off)}
-.mmenu-cta{padding-top:20px;border-top:1px solid var(--border)}
+.mmenu-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;min-height:44px}
+.mmenu-links{display:flex;flex-direction:column;flex:1}
+.mmenu-links>li{border-bottom:1px solid var(--border)}
+.mmenu-links>li>a,.mmenu-links summary{display:flex;align-items:center;justify-content:space-between;padding:17px 4px;font-size:17px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none}
+.mmenu-links summary::-webkit-details-marker{display:none}
+.mmenu-links details[open] .nav-chev{transform:rotate(180deg)}
+.mmenu-sub{display:flex;flex-direction:column;gap:2px;padding:0 0 14px}
+.mmenu-sub a{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:10px;font-size:15.5px;font-weight:500;color:var(--ink-80)}
+.mmenu-sub a:hover{background:var(--off)}
+.mmenu-sub .nav-menu-ico{width:34px;height:34px;font-size:15px}
+.mmenu-cta{padding-top:20px;display:flex;flex-direction:column;gap:10px}
 .mmenu-cta .btn{width:100%;justify-content:center}
 
 /* ── HERO ────────────────────────────────────────────── */
-.hero{position:relative;display:flex;align-items:center;padding:72px 0 88px;overflow:hidden;background:#fff}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 1100px 640px at 50% -80px,rgba(37,99,235,.08),transparent 70%),radial-gradient(ellipse 820px 560px at 100% 82%,rgba(124,58,237,.06),transparent 70%);pointer-events:none;z-index:0}
+.hero{position:relative;padding:88px 0 104px;overflow:hidden;background:linear-gradient(180deg,#F6F8FB 0%,#FFFFFF 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 900px 600px at 85% 30%,rgba(29,78,216,.06),transparent 70%),radial-gradient(ellipse 700px 500px at 0% 100%,rgba(124,58,237,.04),transparent 70%);pointer-events:none;z-index:0}
 .hero .container{position:relative;z-index:1;width:100%}
-.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
-.hero-copy{perspective:1000px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:72px;align-items:center}
 .hero-copy>*{opacity:0;animation:fadeUp .4s cubic-bezier(.16,.84,.44,1) forwards}
-.hero-tag{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(124,58,237,.08));border:1.5px solid rgba(37,99,235,.2);border-radius:100px;font-size:11.5px;font-weight:800;color:var(--blue);letter-spacing:.6px;text-transform:uppercase;margin-bottom:32px;animation-delay:.04s}
-.hero-tag-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;box-shadow:0 0 0 0 rgba(37,99,235,.6);animation:pulse 2.2s infinite}
-.hero-headline{font-size:clamp(2.8rem,8vw,5.2rem);font-weight:800;line-height:1.14;letter-spacing:-2.2px;color:var(--ink);margin-bottom:28px;animation:none;opacity:1;position:relative;z-index:1}
-/* Gradient text is clipped to the line box in WebKit, which cuts the tails off
-   letters like y, g and p. The padding gives them room, the negative margin
-   keeps the lines sitting exactly where they did before. */
-.hero-headline .hl-line{display:block;padding-bottom:.12em;margin-bottom:-.12em;opacity:0;animation:fadeUp .5s cubic-bezier(.16,.84,.44,1) forwards;animation-delay:var(--d)}
-.hl-blue{background:linear-gradient(135deg,var(--blue) 0%,#1E5FD8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hl-purple{background:linear-gradient(135deg,var(--purple) 0%,#6D28D9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hl-emerald{background:linear-gradient(135deg,var(--emerald) 0%,#047857 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--ink-50);max-width:580px;margin-bottom:40px;line-height:1.8;animation-delay:.22s;font-weight:500;letter-spacing:-.3px}
-.hero-ctas{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap;animation-delay:.28s}
-.hero-trust{font-size:14px;color:var(--ink-50);font-weight:500;display:flex;align-items:flex-start;gap:9px;max-width:520px;animation-delay:.5s;letter-spacing:-.2px}
-.hero-trust-line{display:inline-block;width:28px;height:2px;background:linear-gradient(90deg,var(--blue),transparent);margin-top:12px;flex-shrink:0}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--blue-soft);border:1px solid var(--blue-line);border-radius:100px;font-size:17px;font-weight:500;color:var(--blue);letter-spacing:0;margin-bottom:32px;animation-delay:.04s;line-height:1.3}
+.hero-tag-dot{width:9px;height:9px;border-radius:50%;background:var(--blue);flex-shrink:0;box-shadow:0 0 0 0 rgba(29,78,216,.6);animation:pulse 2.2s infinite}
+.hero-headline{font-size:clamp(2.6rem,4vw,4.5rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;color:var(--ink);margin-bottom:30px;animation:none;opacity:1;position:relative;z-index:1}
+.hero-headline .hl-line{display:block;opacity:0;animation:fadeUp .5s cubic-bezier(.16,.84,.44,1) forwards;animation-delay:var(--d)}
+.hl-blue{color:var(--blue)}
+.hl-purple{color:var(--purple)}
+.hl-emerald{color:var(--emerald)}
+.hero-sub{font-size:clamp(1.05rem,1.35vw,1.5rem);color:var(--muted);max-width:720px;margin-bottom:44px;line-height:1.5;animation-delay:.22s;font-weight:400}
+.hero-ctas{display:flex;align-items:center;gap:16px;margin-bottom:44px;flex-wrap:wrap;animation-delay:.28s}
+.hero-ctas .btn-lg{padding:19px 38px;font-size:18px}
+.hero-points{display:flex;flex-wrap:wrap;gap:12px 32px;animation-delay:.4s}
+.hero-points li{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--muted);font-weight:500}
+.hero-points li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--emerald);flex-shrink:0}
 
-/* Hero card: interactive 3D visual */
-.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeInScale .55s cubic-bezier(.16,.84,.44,1) forwards .16s}
-.hero-visual::before{content:'';position:absolute;width:112%;height:112%;border-radius:50%;background:radial-gradient(circle at 45% 35%,rgba(37,99,235,.10),transparent 62%);z-index:0;pointer-events:none}
+/* Hero visual: the readiness check, laid out as a wide landscape panel */
+.hero-visual{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:22px;opacity:0;animation:fadeInScale .55s cubic-bezier(.16,.84,.44,1) forwards .16s}
+.hero-dots{display:flex;justify-content:center;gap:8px}
+.hero-dot{width:22px;height:6px;border:0;border-radius:100px;background:#D5DAE3;cursor:pointer;padding:0;transition:width .25s ease,background .25s ease}
+.hero-dot[aria-pressed="true"]{width:44px;background:var(--blue)}
+.hero-dot:hover{background:#B6BECC}
+.hero-dot[aria-pressed="true"]:hover{background:var(--blue)}
 
 /* Quick check: live self-assessment, colour follows the chosen goal */
-.hero-card{position:relative;z-index:2;width:100%;max-width:460px;background:#fff;border:1px solid #E9EBF2;border-radius:20px;padding:24px;box-shadow:0 1px 2px rgba(13,13,20,.04),0 12px 32px rgba(13,13,20,.07)}
+.hero-card{position:relative;z-index:2;width:100%;background:#fff;border:1px solid #E3E7EF;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(13,13,20,.04),0 30px 60px -20px rgba(13,13,20,.18)}
 .hero-card[data-mode="job"]{--rc:#0D0D14;--rc-tint:rgba(13,13,20,.05);--rc-line:rgba(13,13,20,.25);--rc-sh:rgba(13,13,20,.28)}
-.hero-card[data-mode="learn"]{--rc:#2563EB;--rc-tint:rgba(37,99,235,.07);--rc-line:rgba(37,99,235,.3);--rc-sh:rgba(37,99,235,.32)}
+.hero-card[data-mode="learn"]{--rc:#1D4ED8;--rc-tint:rgba(37,99,235,.07);--rc-line:rgba(37,99,235,.3);--rc-sh:rgba(37,99,235,.32)}
 .hero-card[data-mode="fund"]{--rc:#059669;--rc-tint:rgba(5,150,105,.07);--rc-line:rgba(5,150,105,.3);--rc-sh:rgba(5,150,105,.32)}
 
 .rc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:3px}
-.rc-title{font-size:17px;font-weight:800;letter-spacing:-.4px;color:var(--ink)}
-.rc-count{font-size:13px;font-weight:600;color:var(--ink-50);white-space:nowrap}
+.rc-title{font-size:21px;font-weight:700;letter-spacing:-.4px;color:var(--ink)}
+.rc-count{font-size:14px;font-weight:600;color:var(--ink-50);white-space:nowrap}
 .rc-count b{color:var(--rc);font-size:15px;font-weight:800}
-.rc-prompt{font-size:13px;color:var(--ink-50);margin-bottom:16px;letter-spacing:-.1px}
+.rc-prompt{font-size:14.5px;color:var(--ink-50);margin-bottom:18px;letter-spacing:-.1px}
 
 .rc-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:#F3F5F9;border-radius:13px;padding:4px;margin-bottom:14px}
-.rc-tab{padding:9px 4px;border:none;border-radius:10px;background:transparent;font-family:inherit;font-size:12.5px;font-weight:700;letter-spacing:-.1px;color:var(--ink-50);cursor:pointer;transition:color .18s ease,background-color .18s ease,box-shadow .18s ease;white-space:nowrap}
+.rc-tab{padding:11px 4px;border:none;border-radius:10px;background:transparent;font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.1px;color:var(--ink-50);cursor:pointer;transition:color .18s ease,background-color .18s ease,box-shadow .18s ease;white-space:nowrap}
 .rc-tab:hover{color:var(--ink)}
 .rc-tab[aria-pressed="true"]{background:#fff;color:var(--rc);box-shadow:0 1px 3px rgba(13,13,20,.13)}
 
-.rc-who{font-size:12.5px;color:var(--ink-70);line-height:1.55;margin-bottom:14px;padding:11px 13px;border-radius:12px;background:var(--rc-tint);letter-spacing:-.1px}
+.rc-who{font-size:14px;color:var(--ink-70);line-height:1.55;margin-bottom:14px;padding:11px 13px;border-radius:12px;background:var(--rc-tint);letter-spacing:-.1px}
 
-.rc-item{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;padding:12px 13px;border:1px solid #E9EBF2;border-radius:12px;background:#fff;font-family:inherit;cursor:pointer;margin-bottom:7px;transition:border-color .18s ease,background-color .18s ease,transform .14s ease}
-.rc-name{display:block;font-size:13.5px;font-weight:700;letter-spacing:-.1px;color:var(--ink);line-height:1.35}
-.rc-hint{display:block;font-size:12px;font-weight:500;color:var(--ink-50);line-height:1.45;margin-top:2px}
-.rc-item:hover{border-color:var(--rc-line);transform:translateX(3px)}
+#rcList{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rc-item{display:flex;align-items:flex-start;gap:12px;width:100%;height:100%;text-align:left;padding:15px 16px;border:1px solid #E9EBF2;border-radius:12px;background:#fff;font-family:inherit;cursor:pointer;transition:border-color .18s ease,background-color .18s ease,transform .14s ease}
+.rc-name{display:block;font-size:15px;font-weight:600;letter-spacing:-.1px;color:var(--ink);line-height:1.35}
+.rc-hint{display:block;font-size:13px;font-weight:500;color:var(--ink-50);line-height:1.45;margin-top:2px}
+.rc-item:hover{border-color:var(--rc-line);transform:translateY(-2px)}
 .rc-item[aria-pressed="true"]{background:var(--rc-tint);border-color:var(--rc-line)}
 .rc-item[aria-pressed="true"] .rc-hint{color:var(--ink-70)}
-.rc-item:active{transform:translateX(1px) scale(.996);transition-duration:.06s}
+.rc-item:active{transform:scale(.99);transition-duration:.06s}
 .rc-box{width:20px;height:20px;margin-top:1px;border:1.5px solid #D8DCE7;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:#fff;font-size:11px;font-weight:800;color:transparent;line-height:1;transition:background-color .18s ease,border-color .18s ease}
 .rc-item[aria-pressed="true"] .rc-box{background:var(--rc);border-color:var(--rc);color:#fff}
 
-.rc-bar{height:6px;border-radius:100px;background:#EDEFF5;overflow:hidden;margin:16px 0 10px}
+.rc-bar{height:6px;border-radius:100px;background:#EDEFF5;overflow:hidden;margin:20px 0 16px}
+.rc-foot{display:flex;align-items:center;gap:18px}
 .rc-fill{display:block;height:100%;width:0;border-radius:100px;background:var(--rc);transition:width .35s cubic-bezier(.16,.84,.44,1)}
-.rc-verdict{font-size:13px;font-weight:600;color:var(--ink-80);margin-bottom:14px;min-height:19px;letter-spacing:-.1px}
-.rc-cta{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:12px;background:var(--rc);color:#fff;font-size:14.5px;font-weight:700;letter-spacing:-.2px;box-shadow:0 6px 16px -4px var(--rc-sh);transition:transform .18s ease,box-shadow .18s ease}
+.rc-verdict{flex:1;font-size:14.5px;font-weight:600;color:var(--ink-80);min-height:19px;letter-spacing:-.1px}
+.rc-cta{display:flex;flex-shrink:0;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:8px;background:var(--rc);color:#fff;font-size:16px;font-weight:600;letter-spacing:-.2px;box-shadow:0 6px 16px -4px var(--rc-sh);transition:transform .18s ease,box-shadow .18s ease}
 .rc-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -4px var(--rc-sh)}
 .rc-cta:active{transform:translateY(0);transition-duration:.06s}
 .rc-wa{width:18px;height:18px;flex-shrink:0}
@@ -218,13 +263,28 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 @keyframes pulseGreen{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
 
 /* ── TICKER ──────────────────────────────────────────── */
-.ticker{background:linear-gradient(90deg,#2563EB 0%,#7C3AED 50%,#059669 100%);padding:18px 0;overflow:hidden;white-space:nowrap;user-select:none;box-shadow:0 10px 40px rgba(37,99,235,.25);position:relative}
-.ticker::before{content:'';position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,#2563EB,transparent);z-index:10;pointer-events:none}
-.ticker::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,transparent,#059669);z-index:10;pointer-events:none}
+.ticker{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0;overflow:hidden;white-space:nowrap;user-select:none;position:relative}
+.ticker::before,.ticker::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:10;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
+.ticker::after{right:0;background:linear-gradient(270deg,#fff,rgba(255,255,255,0))}
 .ticker-track{display:inline-flex;animation:ticker-scroll 38s linear infinite;will-change:transform}
 .ticker-track:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;padding:0 24px;font-size:11.5px;font-weight:800;color:rgba(255,255,255,.95);letter-spacing:1px;text-transform:uppercase;transition:opacity .2s}
-.ticker-item::after{content:'•';margin-left:24px;color:rgba(255,255,255,.4);font-size:14px}
+.ticker{padding:18px 0}
+/* Each word gets its own colour: tinted chip, coloured dot, coloured text */
+.ticker-item{--c:#1D4ED8;display:inline-flex;align-items:center;gap:10px;margin:0 9px;padding:9px 18px;border-radius:100px;font-size:15px;font-weight:600;letter-spacing:0;color:var(--c);background:color-mix(in srgb,var(--c) 8%,#fff);border:1px solid color-mix(in srgb,var(--c) 22%,#fff)}
+.ticker-item::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
+.ticker-item:nth-child(12n+1){--c:#1D4ED8}
+.ticker-item:nth-child(12n+2){--c:#7C3AED}
+.ticker-item:nth-child(12n+3){--c:#059669}
+.ticker-item:nth-child(12n+4){--c:#B45309}
+.ticker-item:nth-child(12n+5){--c:#DB2777}
+.ticker-item:nth-child(12n+6){--c:#0E7490}
+.ticker-item:nth-child(12n+7){--c:#4F46E5}
+.ticker-item:nth-child(12n+8){--c:#C2410C}
+.ticker-item:nth-child(12n+9){--c:#15803D}
+.ticker-item:nth-child(12n+10){--c:#E11D48}
+.ticker-item:nth-child(12n+11){--c:#0F766E}
+.ticker-item:nth-child(12n+12){--c:#0369A1}
 @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── PATH CARDS ──────────────────────────────────────── */
@@ -358,10 +418,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 .microcopy{font-size:13.5px;color:var(--ink-50);margin-top:13px;font-weight:500}
 
 /* ── FUNDING ─────────────────────────────────────────── */
-.fund-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
-.fund-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--emerald);margin-bottom:12px}
-.fund-title{font-size:clamp(1.85rem,4vw,2.5rem);font-weight:800;letter-spacing:-1px;color:var(--ink);margin-bottom:14px;line-height:1.15}
-.fund-sub{font-size:15px;color:var(--ink-50);line-height:1.7;margin-bottom:26px}
+.fund-inner{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:stretch}
+.fund-eyebrow{color:var(--emerald)}
+.fund-title{font-size:clamp(1.9rem,3.3vw,3rem);font-weight:700;letter-spacing:-.025em;color:var(--ink);margin-bottom:14px;line-height:1.15}
+.fund-sub{font-size:clamp(1rem,1.2vw,1.15rem);color:var(--muted);line-height:1.7;margin-bottom:26px}
 .fund-services{display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
 .fund-svc{display:flex;align-items:center;gap:15px;padding:16px 18px;border-radius:14px;border:1.5px solid var(--border);background:#fff;box-shadow:0 1px 3px rgba(13,13,20,.04);cursor:pointer;text-align:left;width:100%;font-family:inherit;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
 .fund-svc:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(5,150,105,.5)}
@@ -393,10 +453,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 @keyframes stepIn{to{opacity:1;transform:translateY(0)}}
 
 /* ── WHY APPERA ──────────────────────────────────────── */
-.why-section{background:linear-gradient(160deg,var(--blue),#1B3FD1);padding:80px 0}
-.why-section .section-eyebrow{color:rgba(255,255,255,.6)}
+.why-section{background:linear-gradient(160deg,#1D4ED8,#1E3A8A);padding:96px 0}
+.why-section .section-eyebrow{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
 .why-section .section-title{color:#fff}
-.why-section .section-sub{color:rgba(255,255,255,.6)}
+.why-section .section-sub{color:rgba(255,255,255,.72)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .why-card{background:rgba(255,255,255,.08);border-radius:15px;padding:30px 26px;border:1px solid rgba(255,255,255,.12);transition:background .22s,transform .22s}
 .why-card:hover{background:rgba(255,255,255,.14);transform:translateY(-4px)}
@@ -405,7 +465,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 .why-card-text{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.6}
 
 /* ── FAQ ─────────────────────────────────────────────── */
-.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-list{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq-item{background:#fff;border:1px solid var(--border);border-radius:13px;overflow:hidden;transition:box-shadow .2s,border-color .2s}
 .faq-item.open{box-shadow:var(--shadow);border-color:rgba(37,99,235,.3)}
 .faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 22px;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:inherit;transition:color .2s}
@@ -419,7 +479,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 .faq-a-inner{padding:0 22px 20px;font-size:14.5px;color:var(--ink-50);line-height:1.7}
 
 /* ── CONTACT ─────────────────────────────────────────── */
-.contact-section{background:var(--off);padding:80px 0}
+.contact-section{background:var(--off);padding:96px 0}
 .contact-card{background:#fff;border:1px solid var(--border);border-radius:22px;box-shadow:0 4px 14px rgba(13,13,20,.05),0 24px 60px rgba(13,13,20,.08);overflow:hidden}
 .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;align-items:stretch}
 .contact-info{background:linear-gradient(165deg,#101019,#1A1A2E);padding:44px 38px;display:flex;flex-direction:column}
@@ -454,18 +514,20 @@ a.contact-row:hover .contact-row-icon{background:var(--blue);color:#fff}
 .form-note.bad{color:#EF4444}
 
 /* ── FOOTER ──────────────────────────────────────────── */
-footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:48px 24px 40px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-.footer-brand{display:flex;align-items:center;gap:11px}
-.footer-logo{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.5px}
-.footer-logo span{color:#5B8DEF}
-.footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
-.footer-links a{font-size:13.5px;color:rgba(255,255,255,.45);font-weight:500;transition:color .2s}
-.footer-links a:hover{color:#fff}
-.footer-about{font-size:13px;color:rgba(255,255,255,.38);max-width:620px;line-height:1.7}
-.footer-contact{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:13.5px;color:rgba(255,255,255,.55);font-weight:500}
-.footer-contact a:hover{color:#fff}
-.footer-copy{font-size:12.5px;color:rgba(255,255,255,.28)}
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:72px 0 0}
+.footer-inner{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:48px}
+.footer-brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+.footer-logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.6px}
+.footer-logo span{color:#6B93F5}
+.footer-about{font-size:15px;color:rgba(255,255,255,.55);max-width:420px;line-height:1.7;margin-bottom:24px}
+.footer-cta{display:inline-flex}
+.footer-h{font-size:13px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.footer-col ul{display:flex;flex-direction:column;gap:12px}
+.footer-col a,.footer-col li>span{font-size:15px;color:rgba(255,255,255,.6);transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:var(--container);margin:56px auto 0;padding:24px var(--gutter) 28px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.4)}
+.footer-bottom a{color:rgba(255,255,255,.6)}
+.footer-bottom a:hover{color:#fff}
 
 /* ── SCROLL PROGRESS ─────────────────────────────────── */
 .scroll-prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--blue),var(--purple));z-index:300;will-change:transform}
@@ -494,31 +556,47 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1440px){
+  .nav-inner{gap:28px}
+  .nav-link{padding:10px 11px;font-size:16px}
+  .hero{padding:88px 0 96px}
+  .hero-grid{gap:56px}
+}
 @media(max-width:1200px){
-  .hero-headline{font-size:clamp(2.4rem,7vw,4.4rem)}
-  .hero-card{max-width:450px}
+  .nav-call{display:none}
+  .hero-headline{font-size:clamp(2.4rem,4.2vw,3.6rem)}
+  .hero-sub{font-size:1.1rem}
+  .hero-ctas .btn-lg{padding:17px 28px;font-size:16.5px}
+  .hero-points li{font-size:15.5px}
+  #rcList{grid-template-columns:1fr}
+  .rc-foot{flex-direction:column;align-items:stretch;gap:12px}
 }
 @media(max-width:1100px){
   .path-card{padding:28px 22px}
   .path-title{font-size:20px}
-}
-@media(max-width:1024px){
-  .hero-grid{gap:40px;grid-template-columns:1fr}
-  .hero-card{max-width:100%;margin:0 auto}
-  .hero-visual{max-width:540px}
-  .howto{grid-template-columns:minmax(0,1fr) 280px;gap:40px}
-}
-@media(max-width:840px){
+  /* Nav collapses to the menu button */
+  :root{--gutter:32px}
   .nav-links,.nav-cta-wrap{display:none}
   .mob-btn{display:flex}
+  .nav-inner{height:76px;justify-content:space-between}
+}
+@media(max-width:1024px){
+  .hero{padding:72px 0 80px}
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-headline{font-size:clamp(2.4rem,7vw,4rem)}
+  .hero-sub{font-size:1.15rem}
+  #rcList{grid-template-columns:1fr 1fr}
+  .rc-foot{flex-direction:row;align-items:center}
+  .howto{grid-template-columns:minmax(0,1fr) 280px;gap:40px}
+  .footer-inner{grid-template-columns:1fr 1fr 1fr;gap:40px 32px}
+  .footer-main{grid-column:1 / -1}
+}
+@media(max-width:840px){
   /* Blur behind the sticky header is costly on phones - use a solid bar instead */
-  nav{background:rgba(255,255,255,.97);backdrop-filter:none;-webkit-backdrop-filter:none}
+  nav{background:rgba(255,255,255,.98);backdrop-filter:none;-webkit-backdrop-filter:none}
   .path-card:hover,.rc-cta:hover,.qs-launch:hover,.path-result-btn:hover{transform:none}
-  .section,.why-section,.contact-section{padding:60px 0}
-  .hero{padding:56px 0 68px}
-  .hero-grid{grid-template-columns:1fr;gap:48px;max-width:100%}
-  .hero-headline{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-1.6px}
-  .hero-card{max-width:100%;margin:0 auto}
+  .section,.why-section,.contact-section{padding:64px 0}
+  .section-header{margin-bottom:40px}
   .hero-copy .hero-ctas{flex-direction:column;align-items:stretch}
   .hero-copy .hero-ctas .btn{width:100%}
   .path-grid{grid-template-columns:1fr}
@@ -537,23 +615,41 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
   .contact-grid{grid-template-columns:1fr}
   .contact-info{padding:34px 28px}
   .contact-form-wrap{padding:34px 28px}
+  .announce-sep,.announce-more span,.announce-long{display:none}
+  .announce-short{display:inline}
 }
 @media(max-width:600px){
-  .nav-inner{height:70px}
-  .brand-mark{width:47px;height:42px}
+  :root{--gutter:20px}
+  .announce-inner{padding:10px 48px 10px 20px;justify-content:flex-start;text-align:left}
+  .ticker{padding:14px 0}
+  .ticker::before,.ticker::after{width:36px}
+  .ticker-item{font-size:13.5px;padding:8px 14px;margin:0 6px;gap:8px}
+  .announce-link{font-size:13.5px;gap:10px}
+  .announce-close{right:8px}
+  .nav-inner{height:68px}
+  .brand-mark{width:44px;height:39px}
   .nav-logo{font-size:23px}
-  .section,.why-section,.contact-section{padding:44px 0}
-  .hero{padding:48px 0 60px}
-  .hero-headline{font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:-1.2px;margin-bottom:20px}
-  .hero-sub{font-size:clamp(0.95rem,1.4vw,1rem);margin-bottom:28px}
-  .hero-tag{margin-bottom:24px;padding:8px 14px}
-  .hero-card{padding:18px;border-radius:18px}
-  .rc-title{font-size:16px}
-  .rc-tab{font-size:11.5px;padding:9px 2px}
-  .rc-who{font-size:12px;padding:10px 12px}
-  .rc-item{padding:11px 12px}
-  .rc-name{font-size:13px}
-  .rc-hint{font-size:11.5px}
+  .section,.why-section,.contact-section{padding:52px 0}
+  .section-eyebrow,.fund-eyebrow{font-size:13px;padding:7px 14px;margin-bottom:16px}
+  .hero{padding:44px 0 56px}
+  .hero-grid{gap:40px}
+  .hero-tag{font-size:14px;padding:8px 14px;gap:8px;margin-bottom:22px}
+  .hero-headline{font-size:clamp(1.75rem,8.3vw,2.9rem);letter-spacing:-.035em;margin-bottom:20px}
+  .hero-sub{font-size:1.02rem;margin-bottom:30px}
+  .hero-ctas{margin-bottom:30px;gap:12px}
+  .hero-ctas .btn-lg{padding:16px 24px;font-size:16.5px}
+  .hero-points{flex-direction:column;gap:10px}
+  .hero-points li{font-size:15px}
+  .hero-card{padding:20px 18px;border-radius:16px}
+  .rc-title{font-size:18px}
+  .rc-prompt{font-size:13.5px}
+  .rc-tab{font-size:12.5px;padding:10px 2px}
+  .rc-who{font-size:13px;padding:10px 12px}
+  #rcList{grid-template-columns:1fr;gap:8px}
+  .rc-item{padding:12px 13px}
+  .rc-name{font-size:14px}
+  .rc-hint{font-size:12.5px}
+  .rc-foot{flex-direction:column;align-items:stretch;gap:12px}
   .path-grid{gap:16px}
   .path-card{padding:24px 20px;gap:10px}
   .path-label{font-size:10px}
@@ -573,9 +669,12 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
   /* iOS Safari auto-zooms the page when a focused field's font-size is under 16px,
      which makes selects/inputs look like they "don't open properly" */
   .form-field input,.form-field select,.form-field textarea{font-size:16px}
+  footer{padding-top:52px}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:36px 24px}
+  .footer-bottom{margin-top:40px;flex-direction:column;align-items:flex-start;gap:8px;padding-bottom:84px}
 }
 @media(max-width:400px){
-  .container,.nav-inner,.fund-inner{padding-left:16px;padding-right:16px}
+  :root{--gutter:16px}
   .app-cards{gap:10px}
   .app-card{padding:20px 10px}
 }
@@ -714,6 +813,21 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="scroll-prog" id="scrollProg" aria-hidden="true"></div>
 
+<!-- ══ ANNOUNCEMENT BAR ═══════════════════════════════════ -->
+<div class="announce" id="announce">
+  <div class="announce-inner">
+    <a class="announce-link" href="#placement">
+      <svg class="announce-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+      <span class="announce-long"><b>#callHR:</b> stop waiting for callbacks. Learn to reach HRs directly and get more interview calls</span><span class="announce-short"><b>#callHR:</b> reach HRs directly, get more interview calls</span>
+      <span class="announce-sep" aria-hidden="true">&middot;</span>
+      <span class="announce-more"><span>See how it works</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></span>
+    </a>
+    <button type="button" class="announce-close" id="announceClose" aria-label="Dismiss announcement">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+  </div>
+</div>
+
 <!-- ══ NAV ═══════════════════════════════════════════════ -->
 <header>
 <nav aria-label="Main">
@@ -723,18 +837,37 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       <span class="nav-logo">App<span>Era</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#placement">Placement</a></li>
-      <li><a href="#training">Training</a></li>
-      <li><a href="#funding">Funding</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li class="nav-drop">
+        <button type="button" class="nav-link" aria-expanded="false" aria-controls="menu-placement">Placement<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="nav-menu" id="menu-placement" role="menu">
+          <a href="#placement" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">🎯</span><span><span class="nav-menu-t">#callHR program</span><span class="nav-menu-d">Reach HRs directly, get more interview calls</span></span></a><a href="#how" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">🪜</span><span><span class="nav-menu-t">How it works</span><span class="nav-menu-d">Five steps from profile to interview</span></span></a><a href="#portfolio" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">✨</span><span><span class="nav-menu-t">Free portfolio setup</span><span class="nav-menu-d">A professional portfolio in 15 minutes</span></span></a>
+        </div>
+      </li>
+      <li class="nav-drop">
+        <button type="button" class="nav-link" aria-expanded="false" aria-controls="menu-training">Training<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="nav-menu" id="menu-training" role="menu">
+          <a href="#training" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">📘</span><span><span class="nav-menu-t">Business applications</span><span class="nav-menu-d">CRM, accounting, HRMS, ATS and more</span></span></a><a href="#team" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">🏢</span><span><span class="nav-menu-t">Team training</span><span class="nav-menu-d">For companies, on the tools you already use</span></span></a>
+        </div>
+      </li>
+      <li class="nav-drop">
+        <button type="button" class="nav-link" aria-expanded="false" aria-controls="menu-funding">Funding<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="nav-menu" id="menu-funding" role="menu">
+          <a href="#funding" data-fund-link="pitch" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">📋</span><span><span class="nav-menu-t">Pitch deck review</span><span class="nav-menu-d">Sharpen your story, structure and design</span></span></a><a href="#funding" data-fund-link="model" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">🏗️</span><span><span class="nav-menu-t">Business model</span><span class="nav-menu-d">Make it clear, scalable and investable</span></span></a><a href="#funding" data-fund-link="finance" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">💹</span><span><span class="nav-menu-t">Financial planning</span><span class="nav-menu-d">Projections investors can believe</span></span></a><a href="#funding" data-fund-link="readiness" role="menuitem"><span class="nav-menu-ico" aria-hidden="true">🎯</span><span><span class="nav-menu-t">Investor readiness</span><span class="nav-menu-d">Prepare for tough questions</span></span></a>
+        </div>
+      </li>
+      <li><a class="nav-link" href="#why">Why AppEra</a></li>
+      <li><a class="nav-link" href="#faq">FAQ</a></li>
+      <li><a class="nav-link" href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta-wrap">
+      <a class="nav-call" href="https://wa.me/919502201143" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.05s.87 2.37.99 2.53c.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+        WhatsApp
+      </a>
       <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-blue">Book a free call</a>
     </div>
     <button class="mob-btn" id="mobToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
         <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
       </svg>
     </button>
@@ -750,21 +883,22 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       <span class="nav-logo">App<span>Era</span></span>
     </a>
     <button class="mob-btn" id="mobClose" aria-label="Close menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
         <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
       </svg>
     </button>
   </div>
   <ul class="mmenu-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#placement">Placement</a></li>
-    <li><a href="#training">Training</a></li>
-    <li><a href="#funding">Funding</a></li>
+    <li><details><summary>Placement<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary><div class="mmenu-sub"><a href="#placement"><span class="nav-menu-ico" aria-hidden="true">🎯</span>#callHR program</a><a href="#how"><span class="nav-menu-ico" aria-hidden="true">🪜</span>How it works</a><a href="#portfolio"><span class="nav-menu-ico" aria-hidden="true">✨</span>Free portfolio setup</a></div></details></li>
+    <li><details><summary>Training<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary><div class="mmenu-sub"><a href="#training"><span class="nav-menu-ico" aria-hidden="true">📘</span>Business applications</a><a href="#team"><span class="nav-menu-ico" aria-hidden="true">🏢</span>Team training</a></div></details></li>
+    <li><details><summary>Funding<svg class="nav-chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary><div class="mmenu-sub"><a href="#funding" data-fund-link="pitch"><span class="nav-menu-ico" aria-hidden="true">📋</span>Pitch deck review</a><a href="#funding" data-fund-link="model"><span class="nav-menu-ico" aria-hidden="true">🏗️</span>Business model</a><a href="#funding" data-fund-link="finance"><span class="nav-menu-ico" aria-hidden="true">💹</span>Financial planning</a><a href="#funding" data-fund-link="readiness"><span class="nav-menu-ico" aria-hidden="true">🎯</span>Investor readiness</a></div></details></li>
+    <li><a href="#why">Why AppEra</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="mmenu-cta">
-    <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-blue">Book a free call</a>
+    <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-blue btn-lg">Book a free call</a>
+    <a href="https://wa.me/919502201143" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Chat on WhatsApp</a>
   </div>
 </div>
 
@@ -775,18 +909,22 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
   <div class="container">
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="hero-tag"><span class="hero-tag-dot" aria-hidden="true"></span>For students &middot; Job seekers &middot; Entrepreneurs</p>
+        <p class="hero-tag"><span class="hero-tag-dot" aria-hidden="true"></span>For students, job seekers &amp; entrepreneurs</p>
         <h1 class="hero-headline">
-          <span class="hl-line" style="--d:.12s">AI for your business.</span>
-          <span class="hl-line hl-purple" style="--d:.26s">AI for your career.</span>
-          <span class="hl-line hl-emerald" style="--d:.40s">Funding for your startup.</span>
+          <span class="hl-line" style="--d:.12s">AI for Business.</span>
+          <span class="hl-line hl-purple" style="--d:.26s">AI for Careers.</span>
+          <span class="hl-line hl-emerald" style="--d:.40s">Funding for Startups.</span>
         </h1>
         <p class="hero-sub">AppEra is a business software training and career support company in Hyderabad. We teach students, job seekers and company teams how to use real business applications, help you get placed, and prepare startup founders for funding.</p>
         <div class="hero-ctas">
-          <a href="#path" class="btn btn-blue btn-lg">See what fits you</a>
-          <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Book a free call</a>
+          <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-blue btn-lg">Book a free call<svg class="btn-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+          <a href="#path" class="btn btn-outline btn-lg"><svg class="btn-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M8.2 6.8v6.4l5-3.2z" fill="currentColor"/></svg>See what fits you</a>
         </div>
-        <p class="hero-trust"><span class="hero-trust-line" aria-hidden="true"></span>For students, freshers, job seekers, working professionals, company teams and startup founders.</p>
+        <ul class="hero-points">
+          <li>No coding needed</li>
+          <li>1-on-1 guidance</li>
+          <li>Built for Indian hiring</li>
+        </ul>
       </div>
 
       <div class="hero-visual">
@@ -807,11 +945,18 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
           <div id="rcList"></div>
 
           <div class="rc-bar" aria-hidden="true"><span class="rc-fill" id="rcFill"></span></div>
+          <div class="rc-foot">
           <p class="rc-verdict" id="rcVerdict" aria-live="polite"></p>
           <a class="rc-cta" id="rcCta" href="https://wa.me/919502201143" target="_blank" rel="noopener">
             <svg class="rc-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.05s.87 2.37.99 2.53c.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
             <span>Send My Gaps</span>
           </a>
+          </div>
+        </div>
+        <div class="hero-dots" role="group" aria-label="Switch goal">
+          <button type="button" class="hero-dot" data-mode="job" aria-label="Get a job" aria-pressed="true"></button>
+          <button type="button" class="hero-dot" data-mode="learn" aria-label="Learn tools" aria-pressed="false"></button>
+          <button type="button" class="hero-dot" data-mode="fund" aria-label="Get funding" aria-pressed="false"></button>
         </div>
       </div>
     </div>
@@ -927,7 +1072,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       </div>
     </div>
 
-    <div class="howto">
+    <div class="howto" id="how">
       <div class="howto-steps">
         <p class="step-lead reveal">How it works, in 5 steps</p>
         <div class="step-grid">
@@ -998,7 +1143,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 
     <p class="outcome reveal">The result: <b>more interview calls</b>, not more applications.</p>
 
-    <div class="bonus reveal">
+    <div class="bonus reveal" id="portfolio">
       <span class="bonus-emoji" aria-hidden="true">✨</span>
       <div>
         <h3 class="bonus-title">Included: free portfolio setup</h3>
@@ -1048,7 +1193,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       <span class="trust-badge"><span class="trust-check" aria-hidden="true">✓</span>Doubt support</span>
     </div>
 
-    <div class="team-strip reveal">
+    <div class="team-strip reveal" id="team">
       <div class="team-icon" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 5.5l7-3 7 3-7 3-7-3z"/><path d="M15 5.5v5"/><path d="M4 7.8V11c0 2 1.5 3 4 3s4-1 4-3V7.8"/>
@@ -1165,7 +1310,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 </section>
 
 <!-- ══ WHY APPERA ═════════════════════════════════════════ -->
-<section class="why-section">
+<section class="why-section" id="why">
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">Why AppEra</p>
@@ -1348,24 +1493,45 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 <!-- ══ FOOTER ═════════════════════════════════════════════ -->
 <footer>
   <div class="footer-inner">
-    <a href="#home" class="footer-brand">
-      <span class="brand-mark" aria-hidden="true" style="width:50px;height:44px"></span>
-      <span class="footer-logo">App<span>Era</span></span>
-    </a>
-    <p class="footer-about">AppEra provides business application training, job placement support and startup funding guidance for students, job seekers, working professionals, company teams and founders across India.</p>
-    <ul class="footer-links">
-      <li><a href="#placement">Placement</a></li>
-      <li><a href="#training">Training</a></li>
-      <li><a href="#funding">Funding</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <p class="footer-contact">
-      <a href="mailto:info@appera.in">info@appera.in</a>
-      <a href="tel:+919502201143">+91 95022 01143</a>
-      <span>Hyderabad, India</span>
-    </p>
-    <p class="footer-copy">&copy; <span id="year">2025</span> AppEra Private Limited, Hyderabad</p>
+    <div class="footer-main">
+      <a href="#home" class="footer-brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="footer-logo">App<span>Era</span></span>
+      </a>
+      <p class="footer-about">AppEra provides business application training, job placement support and startup funding guidance for students, job seekers, working professionals, company teams and founders across India.</p>
+      <a href="https://cal.com/apperafreedemo/15min" target="_blank" rel="noopener" class="btn btn-blue footer-cta">Book a free call<svg class="btn-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">Services</p>
+      <ul>
+        <li><a href="#placement">Job placement (#callHR)</a></li>
+        <li><a href="#training">Business app training</a></li>
+        <li><a href="#team">Team training</a></li>
+        <li><a href="#funding">Startup funding</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">Company</p>
+      <ul>
+        <li><a href="#why">Why AppEra</a></li>
+        <li><a href="#path">Choose your path</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">Get in touch</p>
+      <ul>
+        <li><a href="mailto:info@appera.in">info@appera.in</a></li>
+        <li><a href="tel:+919502201143">+91 95022 01143</a></li>
+        <li><a href="https://wa.me/919502201143" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><span>Hyderabad, India</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year">2025</span> AppEra Private Limited, Hyderabad</p>
+    <a href="#home">Back to top &uarr;</a>
   </div>
 </footer>
 
@@ -1392,6 +1558,54 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 <script>
 // ── Current year ──────────────────────────────────────────
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ── Announcement bar ──────────────────────────────────────
+(function(){
+  const bar = document.getElementById('announce');
+  const x = document.getElementById('announceClose');
+  if(!bar || !x) return;
+  try { if(sessionStorage.getItem('appera-announce') === 'off') bar.hidden = true; } catch(err){}
+  x.addEventListener('click', () => {
+    bar.hidden = true;
+    try { sessionStorage.setItem('appera-announce', 'off'); } catch(err){}
+  });
+})();
+
+// ── Nav dropdowns: hover on desktop, click/tap and keyboard everywhere ──
+(function(){
+  const drops = Array.from(document.querySelectorAll('.nav-drop'));
+  const canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function setOpen(d, on){
+    d.classList.toggle('open', on);
+    d.querySelector('.nav-link').setAttribute('aria-expanded', on ? 'true' : 'false');
+  }
+  function closeAll(except){ drops.forEach(d => { if(d !== except) setOpen(d, false); }); }
+  drops.forEach(d => {
+    const btn = d.querySelector('.nav-link');
+    let t;
+    btn.addEventListener('click', e => { e.stopPropagation(); const on = !d.classList.contains('open'); closeAll(d); setOpen(d, on); });
+    if(canHover){
+      d.addEventListener('mouseenter', () => { clearTimeout(t); closeAll(d); setOpen(d, true); });
+      d.addEventListener('mouseleave', () => { t = setTimeout(() => setOpen(d, false), 140); });
+    }
+    d.addEventListener('focusout', e => { if(!d.contains(e.relatedTarget)) setOpen(d, false); });
+    d.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setOpen(d, false)));
+  });
+  document.addEventListener('click', e => { if(!e.target.closest('.nav-drop')) closeAll(); });
+  document.addEventListener('keydown', e => {
+    if(e.key !== 'Escape') return;
+    const open = drops.find(d => d.classList.contains('open'));
+    if(open){ setOpen(open, false); open.querySelector('.nav-link').focus(); }
+  });
+})();
+
+// Funding links in the menus also pick the matching service
+document.querySelectorAll('[data-fund-link]').forEach(a => {
+  a.addEventListener('click', () => {
+    const btn = document.querySelector('.fund-svc[data-fund="' + a.dataset.fundLink + '"]');
+    if(btn) btn.click();
+  });
+});
 
 // ── Mobile menu ───────────────────────────────────────────
 const mmenu = document.getElementById('mmenu');
@@ -1971,6 +2185,7 @@ if(rcCard){
   const rcWho = document.getElementById('rcWho');
   const rcCta = document.getElementById('rcCta');
   const rcTabs = Array.from(document.querySelectorAll('.rc-tab'));
+  const rcDots = Array.from(document.querySelectorAll('.hero-dot'));
   const picked = { job: [], learn: [], fund: [] };
   let mode = 'job';
 
@@ -2032,6 +2247,7 @@ if(rcCard){
       rcList.appendChild(b);
     });
     rcTabs.forEach(t => t.setAttribute('aria-pressed', t.dataset.mode === mode ? 'true' : 'false'));
+    rcDots.forEach(t => t.setAttribute('aria-pressed', t.dataset.mode === mode ? 'true' : 'false'));
     paint();
   }
 
@@ -2046,7 +2262,7 @@ if(rcCard){
     }
   });
 
-  rcTabs.forEach(t => t.addEventListener('click', () => { mode = t.dataset.mode; render(); }));
+  rcTabs.concat(rcDots).forEach(t => t.addEventListener('click', () => { mode = t.dataset.mode; render(); }));
   render();
 }
 
